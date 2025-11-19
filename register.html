@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ثبت نام - اختبار یار</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --primary-color: #1a3a5f;
+            --secondary-color: #e74c3c;
+            --accent-color: #2c5282;
+            --text-dark: #333;
+            --text-light: #666;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        body.dark-mode header {
+            background-color: var(--dark-card);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo .logo-img {
+            height: 50px;
+            width: 50px;
+            margin-left: 12px;
+            transition: var(--transition);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .logo .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Register Section */
+        .register-section {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 0;
+        }
+
+        .register-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        .register-info {
+            padding: 40px;
+        }
+
+        .register-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .register-info h2 {
+            color: var(--dark-text);
+        }
+
+        .register-info p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        body.dark-mode .register-info p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .features-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .features-list li {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .features-list i {
+            color: var(--secondary-color);
+            margin-left: 10px;
+        }
+
+        .register-form-container {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+        
+        body.dark-mode .register-form-container {
+            background-color: var(--dark-card);
+        }
+
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-header h3 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        body.dark-mode .form-header h3 {
+            color: var(--dark-text);
+        }
+
+        .form-header p {
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .form-header p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        body.dark-mode .form-label {
+            color: var(--dark-text);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--white);
+            color: var(--text-dark);
+        }
+        
+        body.dark-mode .form-control {
+            background-color: var(--dark-bg);
+            border-color: #374151;
+            color: var(--dark-text);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(26, 58, 95, 0.1);
+        }
+
+        .password-input {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .agree-terms {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .agree-terms input {
+            width: 16px;
+            height: 16px;
+            margin-top: 3px;
+        }
+
+        .agree-terms label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+        
+        body.dark-mode .agree-terms label {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .agree-terms a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-color);
+        }
+
+        .btn-google {
+            background-color: var(--white);
+            color: var(--text-dark);
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            margin-top: 15px;
+        }
+        
+        body.dark-mode .btn-google {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            border-color: #374151;
+        }
+
+        .btn-google:hover {
+            background-color: #f8f9fa;
+        }
+        
+        body.dark-mode .btn-google:hover {
+            background-color: #374151;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .divider {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .divider:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 0;
+            width: 45%;
+            height: 1px;
+            background-color: #ddd;
+        }
+        
+        body.dark-mode .divider:before {
+            background-color: #374151;
+        }
+
+        .divider:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 45%;
+            height: 1px;
+            background-color: #ddd;
+        }
+        
+        body.dark-mode .divider:after {
+            background-color: #374151;
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 25px;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .login-link {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .login-link a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .login-link a:hover {
+            color: #c0392b;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f2741 0%, #1a3a5f 100%);
+            color: var(--white);
+            padding: 40px 0 20px;
+            margin-top: auto;
+        }
+        
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .register-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .register-info {
+                text-align: center;
+                padding: 20px;
+            }
+            
+            .register-form-container {
+                padding: 30px 20px;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-inner {
+                flex-wrap: wrap;
+            }
+            
+            .header-controls {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .register-info h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-img">
+                        <img src="https://img.freepik.com/premium-vector/attorney-law-service-justice-logo-design_779965-8.jpg" alt="لوگوی اختبار یار">
+                    </div>
+                    <h1>اختبار یار</h1>
+                </a>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" aria-label="تغییر حالت تاریک/روشن">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Register Section -->
+    <section class="register-section">
+        <div class="container">
+            <div class="register-container">
+                <div class="register-info">
+                    <h2>به خانواده اختبار یار بپیوندید</h2>
+                    <p>با ایجاد حساب کاربری، به تمام دوره‌های تخصصی اختبار وکالت دسترسی پیدا کرده و از پشتیبانی اساتید مجرب بهره‌مند شوید.</p>
+                    
+                    <ul class="features-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            دسترسی به تمام دوره‌های آموزشی
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            پیگیری پیشرفت تحصیلی و نتایج آزمون‌ها
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            پشتیبانی تخصصی از اساتید مجرب
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            دریافت جدیدترین محتوای آموزشی
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            امکان شرکت در آزمون‌های آزمایشی
+                        </li>
+                    </ul>
+                    
+                    <p>اگر قبلاً حساب کاربری دارید، می‌توانید از طریق لینک زیر وارد شوید.</p>
+                    <a href="vorod.html" class="btn-primary" style="display: inline-block; width: auto; padding: 12px 25px;">ورود به حساب کاربری</a>
+                </div>
+                
+                <div class="register-form-container">
+                    <div class="form-header">
+                        <h3>ایجاد حساب کاربری</h3>
+                        <p>اطلاعات مورد نیاز را وارد کنید</p>
+                    </div>
+                    
+                    <form id="registerForm">
+                        <div class="form-group">
+                            <label for="fullName" class="form-label">نام و نام خانوادگی</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="نام و نام خانوادگی خود را وارد کنید" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">ایمیل</label>
+                            <input type="email" id="email" class="form-control" placeholder="example@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="username" class="form-label">نام کاربری</label>
+                            <input type="text" id="username" class="form-control" placeholder="نام کاربری مورد نظر" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password" class="form-label">رمز عبور</label>
+                            <div class="password-input">
+                                <input type="password" id="password" class="form-control" placeholder="رمز عبور خود را وارد کنید" required>
+                                <button type="button" class="toggle-password" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="confirmPassword" class="form-label">تکرار رمز عبور</label>
+                            <div class="password-input">
+                                <input type="password" id="confirmPassword" class="form-control" placeholder="رمز عبور خود را مجدداً وارد کنید" required>
+                                <button type="button" class="toggle-password" id="toggleConfirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="agree-terms">
+                                <input type="checkbox" id="agreeTerms" required>
+                                <label for="agreeTerms">با <a href="terms.html">شرایط و قوانین</a> سایت موافقم</label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">ایجاد حساب کاربری</button>
+                        
+                        <div class="divider">
+                            یا ثبت نام کنید با
+                        </div>
+                        
+                        <a href="#" class="btn-google">
+                            <i class="fab fa-google"></i>
+                            ثبت نام با گوگل
+                        </a>
+                        
+                        <div class="login-link">
+                            قبلاً حساب کاربری دارید؟ <a href="vorod.html">وارد شوید</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>اختبار یار</h3>
+                    <p>مرجع تخصصی پاسخ به سوالات امتحانات اختبار وکالت با هدف آماده‌سازی داوطلبان برای موفقیت در آزمون</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>لینک‌های مفید</h3>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="دروس-اختبار.html">دروس اختبار</a></li>
+                        <li><a href="اساتید.html">اساتید</a></li>
+                        <li><a href="سوالات-نمونه.html">سوالات نمونه</a></li>
+                        <li><a href="درباره-ما.html">درباره ما</a></li>
+                        <li><a href="تماس-با-ما.html">تماس با ما</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>دروس اختبار</h3>
+                    <ul>
+                        <li><a href="حقوق-مدنی.html">حقوق مدنی</a></li>
+                        <li><a href="آیین-دادرسی-مدنی.html">آیین دادرسی مدنی</a></li>
+                        <li><a href="حقوق-جزا.html">حقوق جزا</a></li>
+                        <li><a href="آیین-دادرسی-کیفری.html">آیین دادرسی کیفری</a></li>
+                        <li><a href="حقوق-تجارت.html">حقوق تجارت</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تماس با ما</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳</li>
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@ekhtiariyar.ir</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>کلیه حقوق این وبسایت متعلق به اختبار یار می‌باشد. © ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // حالت تاریک/روشن
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // بررسی وضعیت ذخیره شده در localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // نمایش/مخفی کردن رمز عبور
+            const togglePassword = document.getElementById('togglePassword');
+            const passwordInput = document.getElementById('password');
+            
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+            });
+            
+            // نمایش/مخفی کردن تکرار رمز عبور
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+            const confirmPasswordInput = document.getElementById('confirmPassword');
+            
+            toggleConfirmPassword.addEventListener('click', function() {
+                const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                confirmPasswordInput.setAttribute('type', type);
+                this.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+            });
+            
+            // اعتبارسنجی فرم
+            const registerForm = document.getElementById('registerForm');
+            
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const fullName = document.getElementById('fullName').value;
+                const email = document.getElementById('email').value;
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const agreeTerms = document.getElementById('agreeTerms').checked;
+                
+                // اعتبارسنجی ساده
+                if (!fullName || !email || !username || !password || !confirmPassword) {
+                    alert('لطفاً تمام فیلدهای ضروری را پر کنید.');
+                    return;
+                }
+                
+                if (password !== confirmPassword) {
+                    alert('رمز عبور و تکرار آن مطابقت ندارند.');
+                    return;
+                }
+                
+                if (!agreeTerms) {
+                    alert('لطفاً با شرایط و قوانین سایت موافقت کنید.');
+                    return;
+                }
+                
+                // در اینجا می‌توانید درخواست ثبت نام به سرور ارسال کنید
+                alert('در حال ایجاد حساب کاربری...');
+                // window.location.href = 'vorod.html';
+            });
+        });
+    </script>
+</body>
+</html>

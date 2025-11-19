@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="اختبار یار - مرجع تخصصی مرور سوالات امتحانات اختبار ">
+    <meta name="keywords" content="اختبار وکالت, سوالات اختبار, پاسخ سوالات اختبار, حقوق مدنی, آیین دادرسی مدنی, حقوق جزا, آیین دادرسی کیفری, حقوق تجارت, حقوق ثبت, امور حسبی, مقررات انتظامی وکالت">
+    <title>اختبار یار - مرجع تخصصی مرور سوالات امتحانات اختبار</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --primary-color: #1a3a5f;
+            --secondary-color: #e74c3c;
+            --accent-color: #2c5282;
+            --text-dark: #333;
+            --text-light: #666;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Skip to main content for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: var(--secondary-color);
+            color: white;
+            padding: 8px;
+            text-decoration: none;
+            z-index: 10000;
+            transition: top 0.3s;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: transparent;
+            z-index: 1001;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background: var(--secondary-color);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* انیمیشن‌های جدید */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes fadeInScale {
+            from { 
+                opacity: 0; 
+                transform: scale(0.9); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1); 
+            }
+        }
+        
+        @keyframes slideInFromRight {
+            from { 
+                opacity: 0; 
+                transform: translateX(50px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateX(0); 
+            }
+        }
+        
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(231, 76, 60, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: var(--secondary-color); }
+        }
+
+        @keyframes skeleton-loading {
+            0% {
+                background-color: hsl(200, 20%, 80%);
+            }
+            100% {
+                background-color: hsl(200, 20%, 95%);
+            }
+        }
+
+        /* پیش‌لودر */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--secondary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin-bottom: 20px;
+        }
+        
+        .loader-text {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        /* استایل‌های جدید */
+        .typewriter-text {
+            overflow: hidden;
+            border-right: 3px solid var(--secondary-color);
+            white-space: nowrap;
+            margin: 0 auto;
+            animation: typewriter 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 2s infinite;
+        }
+        
+        /* بهبود انیمیشن‌های اسکرول */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+        
+        .scroll-animate.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* انیمیشن‌های ترتیبی برای آیتم‌های متوالی */
+        .scroll-animate.animated:nth-child(1) { transition-delay: 0.1s; }
+        .scroll-animate.animated:nth-child(2) { transition-delay: 0.2s; }
+        .scroll-animate.animated:nth-child(3) { transition-delay: 0.3s; }
+        .scroll-animate.animated:nth-child(4) { transition-delay: 0.4s; }
+        .scroll-animate.animated:nth-child(5) { transition-delay: 0.5s; }
+        .scroll-animate.animated:nth-child(6) { transition-delay: 0.6s; }
+        
+        /* بهبود عملکرد برای موبایل */
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-animate {
+                transition: none;
+            }
+        }
+        
+        /* Skeleton loading */
+        .skeleton {
+            animation: skeleton-loading 1s linear infinite alternate;
+            border-radius: 4px;
+        }
+        
+        .skeleton-text {
+            width: 100%;
+            height: 1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skeleton-title {
+            width: 80%;
+            height: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .skeleton-image {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 1rem;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode header {
+            background-color: var(--dark-card);
+        }
+        
+        header.scrolled {
+            background-color: rgba(26, 58, 95, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0;
+        }
+        
+        body.dark-mode header.scrolled {
+            background-color: rgba(30, 41, 59, 0.95);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo .logo-img {
+            height: 50px;
+            width: 50px;
+            margin-left: 12px;
+            transition: var(--transition);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .logo .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .logo:hover .logo-img {
+            transform: rotate(-5deg);
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .auth-buttons a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-weight: 500;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .auth-buttons a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: right 0.5s;
+        }
+        
+        .auth-buttons a:hover::before {
+            right: 100%;
+        }
+
+        .auth-buttons .login {
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .auth-buttons .register {
+            background-color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+        }
+
+        .auth-buttons a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            background-color: rgba(0,0,0,0.1);
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 15px 20px;
+            display: block;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav ul li a.active:after {
+            width: 100%;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Hero Section - حذف پارالاکس */
+        .hero {
+            background: linear-gradient(135deg, rgba(26, 58, 95, 0.85) 0%, rgba(44, 82, 130, 0.85) 100%), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll; /* تغییر از fixed به scroll */
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        body.dark-mode .hero {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-attachment: scroll; /* تغییر از fixed به scroll */
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin: 0 auto 40px;
+            max-width: 700px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .cta-button:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover:before {
+            transform: translateX(100%);
+        }
+
+        /* Search Section */
+        .search-section {
+            padding: 40px 0;
+            background-color: var(--white);
+        }
+        
+        body.dark-mode .search-section {
+            background-color: var(--dark-card);
+        }
+
+        .search-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-box {
+            display: flex;
+            box-shadow: var(--shadow);
+            border-radius: 50px;
+            overflow: hidden;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            background-color: var(--white);
+            color: var(--text-dark);
+        }
+        
+        body.dark-mode .search-input {
+            background-color: var(--dark-card);
+            color: var(--dark-text);
+        }
+
+        .search-button {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 0 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-button:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        body.dark-mode .features {
+            background-color: var(--dark-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        body.dark-mode .section-title h2 {
+            color: var(--dark-text);
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        body.dark-mode .section-title p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        body.dark-mode .feature-card {
+            background-color: var(--dark-card);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .feature-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card:hover .feature-img img {
+            transform: scale(1.1);
+        }
+
+        .feature-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .feature-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .feature-content h3 {
+            color: var(--dark-text);
+        }
+
+        .feature-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        body.dark-mode .feature-content p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .feature-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            margin-top: auto;
+            transition: var(--transition);
+        }
+
+        .feature-link i {
+            margin-right: 8px;
+            transition: transform 0.3s;
+        }
+
+        .feature-link:hover {
+            color: #c0392b;
+        }
+
+        .feature-link:hover i {
+            transform: translateX(-5px);
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 100px 0;
+            background-color: #f0f4f8;
+        }
+        
+        body.dark-mode .courses {
+            background-color: var(--dark-bg);
+        }
+
+        .courses-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .courses-controls {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-button {
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .filter-button {
+            background-color: var(--dark-card);
+            border-color: #374151;
+            color: var(--dark-text);
+        }
+
+        .filter-button:hover {
+            background-color: #f5f5f5;
+        }
+        
+        body.dark-mode .filter-button:hover {
+            background-color: #374151;
+        }
+
+        .view-all {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .view-all {
+            color: var(--dark-text);
+        }
+
+        .view-all i {
+            margin-right: 8px;
+            transition: transform 0.3s;
+        }
+
+        .view-all:hover {
+            color: var(--secondary-color);
+        }
+
+        .view-all:hover i {
+            transform: translateX(-5px);
+        }
+
+        .courses-filter {
+            display: none;
+            margin-bottom: 30px;
+            padding: 20px;
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        body.dark-mode .courses-filter {
+            background-color: var(--dark-card);
+        }
+
+        .courses-filter.active {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .filter-option {
+            background-color: #f5f5f5;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .filter-option {
+            background-color: #374151;
+            color: var(--dark-text);
+        }
+
+        .filter-option.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .filter-option:hover {
+            background-color: #e0e0e0;
+        }
+        
+        body.dark-mode .filter-option:hover {
+            background-color: #4b5563;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        body.dark-mode .course-card {
+            background-color: var(--dark-card);
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .course-img {
+            height: 180px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .course-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .course-card:hover .course-img img {
+            transform: scale(1.05);
+        }
+
+        .course-rating {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .course-content {
+            padding: 20px;
+        }
+
+        .course-category {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .course-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: var(--primary-color);
+            line-height: 1.4;
+        }
+        
+        body.dark-mode .course-content h3 {
+            color: var(--dark-text);
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        body.dark-mode .course-meta {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .course-meta i {
+            margin-left: 5px;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .course-price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 1.2rem;
+        }
+
+        .course-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .course-link:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--white);
+            position: relative;
+        }
+        
+        body.dark-mode .stats {
+            background: linear-gradient(135deg, var(--dark-card) 0%, #334155 100%);
+        }
+
+        .stats:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: cover;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-item i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            display: inline-block;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--white);
+        }
+        
+        body.dark-mode .testimonials {
+            background-color: var(--dark-bg);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        
+        body.dark-mode .testimonial-card {
+            background-color: var(--dark-card);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .testimonial-card:before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 5rem;
+            color: var(--secondary-color);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            font-style: italic;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+        }
+        
+        body.dark-mode .testimonial-text {
+            color: var(--dark-text);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 15px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .author-info h4 {
+            color: var(--dark-text);
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .author-info p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f2741 0%, #1a3a5f 100%);
+            color: var(--white);
+            padding: 80px 0 20px;
+            position: relative;
+        }
+        
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+            transform: translateX(-5px);
+        }
+
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: #bbb;
+        }
+
+        .contact-info i {
+            margin-left: 10px;
+            margin-top: 3px;
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        body.dark-mode .pagination a {
+            background-color: var(--dark-card);
+            color: var(--dark-text);
+        }
+
+        .pagination a.active, .pagination a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+            }
+            
+            .header-controls {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            nav {
+                width: 100%;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.5s ease;
+            }
+            
+            nav.active {
+                max-height: 500px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                padding: 10px 0;
+            }
+            
+            nav ul li a {
+                padding: 12px 20px;
+            }
+            
+            .hero {
+                padding: 80px 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .courses-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .courses-controls {
+                width: 100%;
+                justify-content: space-between;
+                margin-top: 15px;
+            }
+            
+            .view-all {
+                margin-top: 0;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                left: 20px;
+                width: 45px;
+                height: 45px;
+            }
+            
+            .filter-options {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .features-grid, .courses-grid, .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .auth-buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .auth-buttons a {
+                text-align: center;
+                padding: 8px 15px;
+            }
+            
+            .search-box {
+                flex-direction: column;
+                border-radius: 10px;
+            }
+            
+            .search-input {
+                border-radius: 10px 10px 0 0;
+            }
+            
+            .search-button {
+                border-radius: 0 0 10px 10px;
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">پرش به محتوای اصلی</a>
+
+    <!-- Progress bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- پیش‌لودر -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-spinner"></div>
+        <div class="loader-text">اختبار یار</div>
+    </div>
+
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo floating">
+                    <div class="logo-img">
+                        <img src="https://img.freepik.com/premium-vector/attorney-law-service-justice-logo-design_779965-8.jpg" alt="لوگوی اختبار یار">
+                    </div>
+                    <h1>اختبار یار</h1>
+                </a>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" aria-label="تغییر حالت تاریک/روشن">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="auth-buttons">
+                        <a href="#" class="login">ورود</a>
+                        <a href="#" class="register pulse-glow">ثبت نام</a>
+                    </div>
+                    <button class="mobile-menu-btn" aria-label="منو" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#" class="active">صفحه اصلی</a></li>
+                    <li><a href="#">دروس اختبار</a></li>
+                    <li><a href="#">اساتید</a></li>
+                    <li><a href="#">سوالات نمونه</a></li>
+                    <li><a href="#">درباره ما</a></li>
+                    <li><a href="#">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" aria-label=" بخش معرفی اختبار یار" id="main-content">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="typewriter-text">مرجع تخصصی پاسخ به سوالات امتحانات اختبار وکالت</h2>
+                <p>با تحلیل و پاسخ به سوالات امتحانات اختبار، خود را برای موفقیت در آزمون وکالت آماده کنید</p>
+                <a href="#" class="cta-button">شروع آمادگی</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section" aria-label="جستجوی سوالات اختبار">
+        <div class="container">
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="جستجوی سوالات اختبار...">
+                    <button class="search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" aria-labelledby="features-title">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="features-title">چرا اختبار یار؟</h2>
+                <p>با بهره‌گیری از بهترین اساتید و تحلیل‌های دقیق، مسیر موفقیت در اختبار وکالت را برای شما هموار کرده‌ایم</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card scroll-animate">
+                    <div class="feature-img">
+                        <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="اساتید مجرب اختبار" loading="lazy">
+                    </div>
+                    <div class="feature-content">
+                        <h3>اساتید مجرب و کارکشته</h3>
+                        <p>بهره‌مندی از اساتید برجسته با سال‌ها تجربه در تدریس و تحلیل سوالات اختبار</p>
+                        <a href="#" class="feature-link">بیشتر بدانید <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="feature-card scroll-animate">
+                    <div class="feature-img">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="تحلیل سوالات اختبار" loading="lazy">
+                    </div>
+                    <div class="feature-content">
+                        <h3>تحلیل سوالات اختبار</h3>
+                        <p>تحلیل دقیق سوالات اختبارهای گذشته و ارائه راهکارهای کاربردی برای پاسخگویی</p>
+                        <a href="#" class="feature-link">بیشتر بدانید <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+                <div class="feature-card scroll-animate">
+                    <div class="feature-img">
+                        <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="پشتیبانی و مشاوره" loading="lazy">
+                    </div>
+                    <div class="feature-content">
+                        <h3>پشتیبانی و مشاوره تخصصی</h3>
+                        <p>دسترسی به مشاوران متخصص برای پاسخ به سوالات و رفع اشکالات درسی</p>
+                        <a href="#" class="feature-link">بیشتر بدانید <i class="fas fa-arrow-left"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses" aria-labelledby="courses-title">
+        <div class="container">
+            <div class="courses-header">
+                <div class="section-title">
+                    <h2 id="courses-title">دروس امتحان اختبار</h2>
+                    <p>دروس تخصصی امتحان اختبار وکالت که توسط برترین اساتید تحلیل و تدریس می‌شوند</p>
+                </div>
+                <div class="courses-controls">
+                    <button class="filter-button" id="filterToggle">
+                        <i class="fas fa-filter"></i>
+                        فیلتر دروس
+                    </button>
+                    <a href="#" class="view-all">مشاهده همه دروس <i class="fas fa-arrow-left"></i></a>
+                </div>
+            </div>
+            
+            <div class="courses-filter" id="coursesFilter">
+                <div class="filter-options">
+                    <button class="filter-option active" data-filter="all">همه</button>
+                    <button class="filter-option" data-filter="civil">حقوق مدنی</button>
+                    <button class="filter-option" data-filter="civil-procedure">آیین دادرسی مدنی</button>
+                    <button class="filter-option" data-filter="criminal">حقوق جزا</button>
+                    <button class="filter-option" data-filter="criminal-procedure">آیین دادرسی کیفری</button>
+                    <button class="filter-option" data-filter="commercial">حقوق تجارت</button>
+                    <button class="filter-option" data-filter="registration">حقوق ثبت</button>
+                    <button class="filter-option" data-filter="estate">امور حسبی</button>
+                    <button class="filter-option" data-filter="disciplinary">مقررات انتظامی وکالت</button>
+                </div>
+            </div>
+            
+            <div class="courses-grid" id="coursesGrid">
+                <div class="course-card scroll-animate" data-category="civil">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="حقوق مدنی - استاد رسول موسوی" loading="lazy">
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            4.8
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">حقوق مدنی</span>
+                        <h3>تحلیل سوالات حقوق مدنی در اختبار</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: رسول موسوی</span>
+                        </div>
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> ۴۰ ساعت</span>
+                            <span><i class="far fa-user"></i> ۱۵۰ دانشجو</span>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۴۹۰,۰۰۰ تومان</div>
+                            <a href="#" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card scroll-animate" data-category="criminal-procedure">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="آیین دادرسی کیفری - استاد عرفانی قربانی فر" loading="lazy">
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            4.7
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">آیین دادرسی کیفری</span>
+                        <h3>تحلیل سوالات آیین دادرسی کیفری در اختبار</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: عرفانی قربانی فر</span>
+                        </div>
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> ۳۵ ساعت</span>
+                            <span><i class="far fa-user"></i> ۱۲۰ دانشجو</span>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۴۲۰,۰۰۰ تومان</div>
+                            <a href="#" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card scroll-animate" data-category="commercial">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="حقوق تجارت - استاد پژمان معتمدی" loading="lazy">
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            4.9
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">حقوق تجارت</span>
+                        <h3>تحلیل سوالات حقوق تجارت در اختبار</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: پژمان معتمدی</span>
+                        </div>
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> ۳۰ ساعت</span>
+                            <span><i class="far fa-user"></i> ۹۵ دانشجو</span>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۳۸۰,۰۰۰ تومان</div>
+                            <a href="#" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="course-card scroll-animate" data-category="civil-procedure">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="آیین دادرسی مدنی" loading="lazy">
+                        <div class="course-rating">
+                            <i class="fas fa-star"></i>
+                            4.6
+                        </div>
+                    </div>
+                    <div class="course-content">
+                        <span class="course-category">آیین دادرسی مدنی</span>
+                        <h3>تحلیل سوالات آیین دادرسی مدنی در اختبار</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: در حال تعیین</span>
+                        </div>
+                        <div class="course-meta">
+                            <span><i class="far fa-clock"></i> ۴۵ ساعت</span>
+                            <span><i class="far fa-user"></i> ۸۰ دانشجو</span>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۵۵۰,۰۰۰ تومان</div>
+                            <a href="#" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="fas fa-chevron-left"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats" aria-label="آمار اختبار یار">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item scroll-animate">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>۲,۵۰۰+</h3>
+                    <p>دانشجوی فعال</p>
+                </div>
+                <div class="stat-item scroll-animate">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>۱۵+</h3>
+                    <p>استاد مجرب</p>
+                </div>
+                <div class="stat-item scroll-animate">
+                    <i class="fas fa-book"></i>
+                    <h3>۸+</h3>
+                    <p>درس تخصصی</p>
+                </div>
+                <div class="stat-item scroll-animate">
+                    <i class="fas fa-award"></i>
+                    <h3>۹۵%</h3>
+                    <p>رضایت دانشجویان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" aria-labelledby="testimonials-title">
+        <div class="container">
+            <div class="section-title">
+                <h2 id="testimonials-title">نظرات دانشجویان</h2>
+                <p>تجربه دانشجویان ما از استفاده از خدمات اختبار یار</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card scroll-animate">
+                    <div class="testimonial-text">
+                        تحلیل سوالات حقوق مدنی توسط استاد موسوی واقعاً عالی بود. توانستم در اختبار موفق شوم.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="علی محمدی" loading="lazy">
+                        </div>
+                        <div class="author-info">
+                            <h4>علی محمدی</h4>
+                            <p>دانشجوی حقوق</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-animate">
+                    <div class="testimonial-text">
+                        به عنوان کسی که در اختبار اول موفق نشده بودم، تحلیل سوالات آیین دادرسی کیفری کمک زیادی به من کرد.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="فاطمه رضایی" loading="lazy">
+                        </div>
+                        <div class="author-info">
+                            <h4>فاطمه رضایی</h4>
+                            <p>کارشناس حقوقی</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card scroll-animate">
+                    <div class="testimonial-text">
+                        تحلیل سوالات اختبارهای گذشته واقعاً به من کمک کرد تا با سبک سوالات آشنا شوم و در جلسه آزمون اعتماد به نفس بیشتری داشته باشم.
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="محمد حسینی" loading="lazy">
+                        </div>
+                        <div class="author-info">
+                            <h4>محمد حسینی</h4>
+                            <p>وکیل پایه یک دادگستری</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>اختبار یار</h3>
+                    <p>مرجع تخصصی پاسخ به سوالات امتحانات اختبار وکالت با هدف آماده‌سازی داوطلبان برای موفقیت در آزمون</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>لینک‌های مفید</h3>
+                    <ul>
+                        <li><a href="#">صفحه اصلی</a></li>
+                        <li><a href="#">درباره ما</a></li>
+                        <li><a href="#">تماس با ما</a></li>
+                        <li><a href="#">قوانین و مقررات</a></li>
+                        <li><a href="#">سوالات متداول</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>دروس اختبار</h3>
+                    <ul>
+                        <li><a href="#">حقوق مدنی</a></li>
+                        <li><a href="#">آیین دادرسی مدنی</a></li>
+                        <li><a href="#">حقوق جزا</a></li>
+                        <li><a href="#">آیین دادرسی کیفری</a></li>
+                        <li><a href="#">حقوق تجارت</a></li>
+                        <li><a href="#">حقوق ثبت</a></li>
+                        <li><a href="#">امور حسبی</a></li>
+                        <li><a href="#">مقررات انتظامی وکالت</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تماس با ما</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳</li>
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@ekhtiariyar.ir</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>کلیه حقوق این وبسایت متعلق به اختبار یار می‌باشد. © ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" aria-label="بازگشت به بالا">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // پیش‌لودر
+            const pageLoader = document.getElementById('pageLoader');
+            setTimeout(() => {
+                pageLoader.classList.add('hidden');
+            }, 1500);
+
+            // منوی موبایل
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const mainNav = document.getElementById('main-nav');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mainNav.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    icon.classList.toggle('fa-bars');
+                    icon.classList.toggle('fa-times');
+                });
+            }
+            
+            // دکمه بازگشت به بالا
+            const backToTopButton = document.querySelector('.back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+                
+                // هدر هوشمند
+                const header = document.getElementById('mainHeader');
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                
+                // نوار پیشرفت
+                const winHeight = window.innerHeight;
+                const docHeight = document.documentElement.scrollHeight;
+                const scrollTop = window.pageYOffset;
+                const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+                document.getElementById('progressBar').style.width = scrollPercent + '%';
+            });
+            
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // بهبود انیمیشن‌های اسکرول
+            const scrollElements = document.querySelectorAll('.scroll-animate');
+            
+            const elementInView = (el, offset = 0) => {
+                const elementTop = el.getBoundingClientRect().top;
+                return (
+                    elementTop <= 
+                    ((window.innerHeight || document.documentElement.clientHeight) * (1 - offset))
+                );
+            };
+            
+            const displayScrollElement = (element) => {
+                element.classList.add('animated');
+            };
+            
+            const hideScrollElement = (element) => {
+                element.classList.remove('animated');
+            };
+            
+            const handleScrollAnimation = () => {
+                scrollElements.forEach((el) => {
+                    if (elementInView(el, 0.1)) { // 10% از المان در دید باشد
+                        displayScrollElement(el);
+                    } else {
+                        // اگر می‌خواهید المان‌ها هنگام اسکرول به بالا دوباره مخفی شوند
+                        // hideScrollElement(el);
+                    }
+                });
+            };
+            
+            // بهبود عملکرد با throttle
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        handleScrollAnimation();
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+            
+            // اجرای اولیه
+            handleScrollAnimation();
+            
+            // تایپ‌رایتر برای عنوان اصلی
+            const heroTitle = document.querySelector('.hero h2');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                heroTitle.textContent = '';
+                heroTitle.classList.add('typewriter-text');
+                setTimeout(() => {
+                    heroTitle.textContent = originalText;
+                    setTimeout(() => {
+                        heroTitle.style.borderRight = 'none';
+                    }, 1000);
+                }, 3500);
+            }
+            
+            // سیستم فیلتر دوره‌ها
+            const filterToggle = document.getElementById('filterToggle');
+            const coursesFilter = document.getElementById('coursesFilter');
+            const filterOptions = document.querySelectorAll('.filter-option');
+            const courseCards = document.querySelectorAll('.course-card');
+            
+            if (filterToggle) {
+                filterToggle.addEventListener('click', function() {
+                    coursesFilter.classList.toggle('active');
+                });
+            }
+            
+            filterOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // حذف کلاس active از همه گزینه‌ها
+                    filterOptions.forEach(opt => opt.classList.remove('active'));
+                    // اضافه کردن کلاس active به گزینه انتخاب شده
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // فیلتر کردن دوره‌ها
+                    courseCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // سیستم جستجو
+            const searchInput = document.querySelector('.search-input');
+            const searchButton = document.querySelector('.search-button');
+            
+            if (searchButton) {
+                searchButton.addEventListener('click', function() {
+                    performSearch();
+                });
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+            
+            function performSearch() {
+                const searchTerm = searchInput.value.trim();
+                if (searchTerm) {
+                    alert(`جستجو برای: "${searchTerm}" - این قابلیت در نسخه کامل پیاده‌سازی خواهد شد`);
+                    // در نسخه کامل، اینجا درخواست AJAX به سرور ارسال می‌شود
+                }
+            }
+            
+            // حالت تاریک/روشن
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // بررسی وضعیت ذخیره شده در localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // Lazy loading برای تصاویر
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            img.classList.remove('lazy');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+                
+                document.querySelectorAll('img[data-src]').forEach(img => {
+                    imageObserver.observe(img);
+                });
+            }
+            
+            // بهبود navigation با هایلایت کردن لینک فعال
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = document.querySelectorAll('section');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= (sectionTop - 200)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اساتید - اختبار یار</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --primary-color: #1a3a5f;
+            --secondary-color: #e74c3c;
+            --accent-color: #2c5282;
+            --text-dark: #333;
+            --text-light: #666;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode header {
+            background-color: var(--dark-card);
+        }
+        
+        header.scrolled {
+            background-color: rgba(26, 58, 95, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0;
+        }
+        
+        body.dark-mode header.scrolled {
+            background-color: rgba(30, 41, 59, 0.95);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo .logo-img {
+            height: 50px;
+            width: 50px;
+            margin-left: 12px;
+            transition: var(--transition);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .logo .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .auth-buttons a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .auth-buttons .login {
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .auth-buttons .register {
+            background-color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+        }
+
+        .auth-buttons a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            background-color: rgba(0,0,0,0.1);
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 15px 20px;
+            display: block;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav ul li a.active:after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(26, 58, 95, 0.9) 0%, rgba(44, 82, 130, 0.9) 100%), url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        body.dark-mode .page-header {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%), url('https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        body.dark-mode .breadcrumb {
+            background-color: var(--dark-card);
+        }
+
+        .breadcrumb ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb li:not(:last-child):after {
+            content: '/';
+            margin-right: 10px;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .breadcrumb li:not(:last-child):after {
+            color: var(--dark-text);
+            opacity: 0.7;
+        }
+
+        .breadcrumb a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .breadcrumb a {
+            color: var(--dark-text);
+            opacity: 0.7;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .breadcrumb a:hover {
+            color: var(--secondary-color);
+        }
+
+        .breadcrumb span {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        body.dark-mode .breadcrumb span {
+            color: var(--secondary-color);
+        }
+
+        /* Teachers Section */
+        .teachers-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        body.dark-mode .teachers-section {
+            background-color: var(--dark-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        body.dark-mode .section-title h2 {
+            color: var(--dark-text);
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        body.dark-mode .section-title p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .teachers-filter {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        
+        body.dark-mode .teachers-filter {
+            background-color: var(--dark-card);
+        }
+
+        .filter-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        body.dark-mode .filter-title {
+            color: var(--dark-text);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-option {
+            background-color: #f5f5f5;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        body.dark-mode .filter-option {
+            background-color: #374151;
+            color: var(--dark-text);
+        }
+
+        .filter-option.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .filter-option:hover {
+            background-color: #e0e0e0;
+        }
+        
+        body.dark-mode .filter-option:hover {
+            background-color: #4b5563;
+        }
+
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .teacher-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        body.dark-mode .teacher-card {
+            background-color: var(--dark-card);
+        }
+
+        .teacher-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .teacher-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .teacher-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .teacher-card:hover .teacher-img img {
+            transform: scale(1.05);
+        }
+
+        .teacher-specialty {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.7));
+            color: var(--white);
+            padding: 15px;
+            text-align: center;
+        }
+
+        .teacher-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .teacher-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .teacher-content h3 {
+            color: var(--dark-text);
+        }
+
+        .teacher-title {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .teacher-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        body.dark-mode .teacher-description {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .teacher-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            padding: 15px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+        
+        body.dark-mode .teacher-stats {
+            border-top: 1px solid #374151;
+            border-bottom: 1px solid #374151;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .stat-value {
+            color: var(--dark-text);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .stat-label {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .teacher-expertise {
+            margin-bottom: 20px;
+        }
+
+        .expertise-title {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            text-align: right;
+        }
+        
+        body.dark-mode .expertise-title {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .expertise-tag {
+            background-color: #e9ecef;
+            color: var(--text-dark);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .expertise-tag {
+            background-color: #374151;
+            color: var(--dark-text);
+        }
+
+        .expertise-tag:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .teacher-footer {
+            margin-top: auto;
+        }
+
+        .teacher-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            width: 100%;
+            text-align: center;
+        }
+
+        .teacher-link:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Featured Teachers */
+        .featured-teachers {
+            padding: 60px 0;
+            background-color: #f0f4f8;
+        }
+        
+        body.dark-mode .featured-teachers {
+            background-color: var(--dark-card);
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .featured-teacher {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        body.dark-mode .featured-teacher {
+            background-color: var(--dark-bg);
+        }
+
+        .featured-teacher:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .featured-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .featured-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .featured-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-left: 15px;
+            border: 3px solid var(--primary-color);
+        }
+
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .featured-info h4 {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .featured-info h4 {
+            color: var(--dark-text);
+        }
+
+        .featured-info p {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .featured-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        body.dark-mode .featured-description {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .featured-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .featured-link:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        body.dark-mode .pagination a {
+            background-color: var(--dark-card);
+            color: var(--dark-text);
+        }
+
+        .pagination a.active, .pagination a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f2741 0%, #1a3a5f 100%);
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+        
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+            }
+            
+            .header-controls {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .teachers-grid, .featured-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-options {
+                justify-content: center;
+            }
+            
+            .featured-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .featured-img {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .auth-buttons a {
+                text-align: center;
+                padding: 8px 15px;
+            }
+            
+            .teacher-stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-img">
+                        <img src="https://img.freepik.com/premium-vector/attorney-law-service-justice-logo-design_779965-8.jpg" alt="لوگوی اختبار یار">
+                    </div>
+                    <h1>اختبار یار</h1>
+                </a>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" aria-label="تغییر حالت تاریک/روشن">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="auth-buttons">
+                        <a href="login.html" class="login">ورود</a>
+                        <a href="register.html" class="register">ثبت نام</a>
+                    </div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="dorous-ekhtiabar.html">دروس اختبار</a></li>
+                    <li><a href="asatid.html" class="active">اساتید</a></li>
+                    <li><a href="soalat-namone.html">سوالات نمونه</a></li>
+                    <li><a href="darbare-ma.html">درباره ما</a></li>
+                    <li><a href="tamas-ba-ma.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>اساتید مجرب اختبار یار</h1>
+            <p>با اساتید برجسته و کارکشته با سال‌ها تجربه در تدریس و تحلیل سوالات اختبار آشنا شوید</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">صفحه اصلی</a></li>
+                <li><span>اساتید</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section class="teachers-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>تیم اساتید اختبار یار</h2>
+                <p>اساتید مجربی که مسیر موفقیت در اختبار وکالت را برای شما هموار می‌کنند</p>
+            </div>
+            
+            <div class="teachers-filter">
+                <h3 class="filter-title"><i class="fas fa-filter"></i> فیلتر اساتید</h3>
+                <div class="filter-options">
+                    <button class="filter-option active" data-filter="all">همه اساتید</button>
+                    <button class="filter-option" data-filter="civil">حقوق مدنی</button>
+                    <button class="filter-option" data-filter="civil-procedure">آیین دادرسی مدنی</button>
+                    <button class="filter-option" data-filter="criminal">حقوق جزا</button>
+                    <button class="filter-option" data-filter="criminal-procedure">آیین دادرسی کیفری</button>
+                    <button class="filter-option" data-filter="commercial">حقوق تجارت</button>
+                    <button class="filter-option" data-filter="registration">حقوق ثبت</button>
+                    <button class="filter-option" data-filter="estate">امور حسبی</button>
+                    <button class="filter-option" data-filter="disciplinary">مقررات انتظامی</button>
+                </div>
+            </div>
+            
+            <div class="teachers-grid" id="teachersGrid">
+                <!-- استاد رسول موسوی -->
+                <div class="teacher-card" data-category="civil">
+                    <div class="teacher-img">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="استاد رسول موسوی" loading="lazy">
+                        <div class="teacher-specialty">حقوق تجارت </div>
+                    </div>
+                    <div class="teacher-content">
+                        <h3>رسول موسوی</h3>
+                        <div class="teacher-title">کارشناس ارشد حقوق تجارت بین الملل</div>
+                        <p class="teacher-description">عضو کانون وکلای دادگستری مرکز ، دارای پروانه وکالت تخصصی جرائم اقتصادی از مرکز وکلای قوه قضائیه ، متخصص در حقوق رمز ارز ها و جرائم رمز ارزی..</p>
+                        
+                        <div class="teacher-stats">
+                            <div class="stat">
+                                <div class="stat-value">۱۵۰+</div>ا
+                                <div class="stat-label">دانشجو</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۱۲</div>
+                                <div class="stat-label">دوره</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۴.۸</div>
+                                <div class="stat-label">امتیاز</div>
+                            </div>
+                        </div>
+                        
+                        <div class="teacher-expertise">
+                            <div class="expertise-title">تخصص‌ها:</div>
+                            <div class="expertise-tags">
+                                <span class="expertise-tag">حقوق مدنی</span>
+                                <span class="expertise-tag">آیین دادرسی مدنی</span>
+                                <span class="expertise-tag">حقوق خانواده</span>
+                            </div>
+                        </div>
+                        
+                        <div class="teacher-footer">
+                            <a href="teacher-rasool-mousavi.html" class="teacher-link">مشاهده پروفایل</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- استاد عرفانی قربانی فر -->
+                <div class="teacher-card" data-category="criminal-procedure">
+                    <div class="teacher-img">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="استاد عرفانی قربانی فر" loading="lazy">
+                        <div class="teacher-specialty">متخصص آیین دادرسی کیفری</div>
+                    </div>
+                    <div class="teacher-content">
+                        <h3> عرفانی قربانی فر</h3>
+                        <div class="teacher-title">کارشناس ارشد حقوق جزا و جرم شناسی دانشگاه تهران </div>
+                        <p class="teacher-description">عضو کانون وکلای دادگستری مرکز ، کارشناس ارشد حقوق جزا و جرم شناسی شاخه اطفال دانشگاه تهران ، ویراستار کتاب های حقوقی .</p>
+                        
+                        <div class="teacher-stats">
+                            <div class="stat">
+                                <div class="stat-value">۱۲۰+</div>
+                                <div class="stat-label">دانشجو</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۸</div>
+                                <div class="stat-label">دوره</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۴.۷</div>
+                                <div class="stat-label">امتیاز</div>
+                            </div>
+                        </div>
+                        
+                        <div class="teacher-expertise">
+                            <div class="expertise-title">تخصص‌ها:</div>
+                            <div class="expertise-tags">
+                                <span class="expertise-tag">آیین دادرسی کیفری</span>
+                                <span class="expertise-tag">حقوق جزا</span>
+                                <span class="expertise-tag">جرم شناسی</span>
+                            </div>
+                        </div>
+                        
+                        <div class="teacher-footer">
+                            <a href="teacher-erfani-ghorbani-far.html" class="teacher-link">مشاهده پروفایل</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- استاد پژمان معتمدی -->
+                <div class="teacher-card" data-category="commercial">
+                    <div class="teacher-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="استاد پژمان معتمدی" loading="lazy">
+                        <div class="teacher-specialty">متخصص حقوق تجارت</div>
+                    </div>
+                    <div class="teacher-content">
+                        <h3>پژمان معتمدی</h3>
+                        <div class="teacher-title">فوق لیسانس حقوق نفت و گاز</div>
+                        <p class="teacher-description">عضو کانون وکلای دادگستری مرکز ، کارشناسی ارشد حقوق نفت و گاز از دانشگاه علامه طباطبایی .</p>
+                        
+                        <div class="teacher-stats">
+                            <div class="stat">
+                                <div class="stat-value">۹۵+</div>
+                                <div class="stat-label">دانشجو</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۶</div>
+                                <div class="stat-label">دوره</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۴.۹</div>
+                                <div class="stat-label">امتیاز</div>
+                            </div>
+                        </div>
+                        
+                        <div class="teacher-expertise">
+                            <div class="expertise-title">تخصص‌ها:</div>
+                            <div class="expertise-tags">
+                                <span class="expertise-tag">حقوق تجارت</span>
+                                <span class="expertise-tag">حقوق شرکت‌ها</span>
+                                <span class="expertise-tag">اسناد تجاری</span>
+                            </div>
+                        </div>
+                        
+                        <div class="teacher-footer">
+                            <a href="teacher-pejman-motamedi.html" class="teacher-link">مشاهده پروفایل</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="fas fa-chevron-left"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Teachers Section -->
+    <section class="featured-teachers">
+        <div class="container">
+            <div class="section-title">
+                <h2>اساتید برجسته</h2>
+                <p>برخی از اساتید مطرح و پرطرفدار اختبار یار</p>
+            </div>
+            
+            <div class="featured-grid">
+                <div class="featured-teacher">
+                    <div class="featured-content">
+                        <div class="featured-header">
+                            <div class="featured-img">
+                                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="استاد رسول موسوی">
+                            </div>
+                            <div class="featured-info">
+                                <h4>رسول موسوی</h4>
+                                <p>حقوق تجارت</p>
+                            </div>
+                        </div>
+                        <p class="featured-description">"هدف من این است که دانشجویان نه تنها برای اختبار آماده شوند، بلکه درک عمیقی از مفاهیم حقوقی پیدا کنند که در طول دوران وکالت به کارشان می‌آید."</p>
+                        <a href="teacher-rasool-mousavi.html" class="featured-link">مشاهده پروفایل کامل</a>
+                    </div>
+                </div>
+                
+                <div class="featured-teacher">
+                    <div class="featured-content">
+                        <div class="featured-header">
+                            <div class="featured-img">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="استاد عرفانی قربانی فر">
+                            </div>
+                            <div class="featured-info">
+                                <h4>عرفانی قربانی فر</h4>
+                                <p>مدرس آیین دادرسی کیفری</p>
+                            </div>
+                        </div>
+                        <p class="featured-description">"در تدریس آیین دادرسی کیفری، تمرکز من بر روی案例分析 (Case Analysis) است تا دانشجویان بتوانند مفاهیم را در پرونده‌های واقعی به کار بگیرند."</p>
+                        <a href="teacher-erfani-ghorbani-far.html" class="featured-link">مشاهده پروفایل کامل</a>
+                    </div>
+                </div>
+                
+                <div class="featured-teacher">
+                    <div class="featured-content">
+                        <div class="featured-header">
+                            <div class="featured-img">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="استاد پژمان معتمدی">
+                            </div>
+                            <div class="featured-info">
+                                <h4> پژمان معتمدی</h4>
+                                <p>حقوق تجارت</p>
+                            </div>
+                        </div>
+                        <p class="featured-description">"حقوق تجارت دنیای پویا و جذابی است. در دوره‌هایم سعی می‌کنم ارتباط مباحث تئوری با مسائل عملی و روزمره تجاری را نشان دهم."</p>
+                        <a href="teacher-pejman-motamedi.html" class="featured-link">مشاهده پروفایل کامل</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>اختبار یار</h3>
+                    <p>مرجع تخصصی پاسخ به سوالات امتحانات اختبار وکالت با هدف آماده‌سازی داوطلبان برای موفقیت در آزمون</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>لینک‌های مفید</h3>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="darbare-ma.html">درباره ما</a></li>
+                        <li><a href="tamas-ba-ma.html">تماس با ما</a></li>
+                        <li><a href="ghavanin.html">قوانین و مقررات</a></li>
+                        <li><a href="soalat-motadavel.html">سوالات متداول</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>دروس اختبار</h3>
+                    <ul>
+                        <li><a href="hooghogh-madani.html">حقوق مدنی</a></li>
+                        <li><a href="ayin-dadresi-madani.html">آیین دادرسی مدنی</a></li>
+                        <li><a href="hooghogh-jaza.html">حقوق جزا</a></li>
+                        <li><a href="ayin-dadresi-keifari.html">آیین دادرسی کیفری</a></li>
+                        <li><a href="hooghogh-tejarat.html">حقوق تجارت</a></li>
+                        <li><a href="hooghogh-sabt.html">حقوق ثبت</a></li>
+                        <li><a href="omoor-hasbi.html">امور حسبی</a></li>
+                        <li><a href="magharaat-entezami-vakalat.html">مقررات انتظامی وکالت</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تماس با ما</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳</li>
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@ekhtiariyar.ir</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>کلیه حقوق این وبسایت متعلق به اختبار یار می‌باشد. © ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // سیستم فیلتر اساتید
+            const filterOptions = document.querySelectorAll('.filter-option');
+            const teacherCards = document.querySelectorAll('.teacher-card');
+            
+            filterOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // حذف کلاس active از همه گزینه‌ها
+                    filterOptions.forEach(opt => opt.classList.remove('active'));
+                    // اضافه کردن کلاس active به گزینه انتخاب شده
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // فیلتر کردن اساتید
+                    teacherCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // حالت تاریک/روشن
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // بررسی وضعیت ذخیره شده در localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // هدر هوشمند
+            const header = document.getElementById('mainHeader');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

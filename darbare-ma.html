@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درباره ما - اختبار یار</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --primary-color: #1a3a5f;
+            --secondary-color: #e74c3c;
+            --accent-color: #2c5282;
+            --text-dark: #333;
+            --text-light: #666;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode header {
+            background-color: var(--dark-card);
+        }
+        
+        header.scrolled {
+            background-color: rgba(26, 58, 95, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0;
+        }
+        
+        body.dark-mode header.scrolled {
+            background-color: rgba(30, 41, 59, 0.95);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo .logo-img {
+            height: 50px;
+            width: 50px;
+            margin-left: 12px;
+            transition: var(--transition);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .logo .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .auth-buttons a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .auth-buttons .login {
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .auth-buttons .register {
+            background-color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+        }
+
+        .auth-buttons a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            background-color: rgba(0,0,0,0.1);
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 15px 20px;
+            display: block;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav ul li a.active:after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(26, 58, 95, 0.9) 0%, rgba(44, 82, 130, 0.9) 100%), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        body.dark-mode .page-header {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        body.dark-mode .breadcrumb {
+            background-color: var(--dark-card);
+        }
+
+        .breadcrumb ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb li:not(:last-child):after {
+            content: '/';
+            margin-right: 10px;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .breadcrumb li:not(:last-child):after {
+            color: var(--dark-text);
+            opacity: 0.7;
+        }
+
+        .breadcrumb a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .breadcrumb a {
+            color: var(--dark-text);
+            opacity: 0.7;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .breadcrumb a:hover {
+            color: var(--secondary-color);
+        }
+
+        .breadcrumb span {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        body.dark-mode .breadcrumb span {
+            color: var(--secondary-color);
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        body.dark-mode .about-section {
+            background-color: var(--dark-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        body.dark-mode .section-title h2 {
+            color: var(--dark-text);
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        body.dark-mode .section-title p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .about-text h3 {
+            color: var(--dark-text);
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        body.dark-mode .about-text p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Mission Vision Section */
+        .mission-vision {
+            padding: 60px 0;
+            background-color: #f0f4f8;
+        }
+        
+        body.dark-mode .mission-vision {
+            background-color: var(--dark-card);
+        }
+
+        .mv-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .mv-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .mv-card {
+            background-color: var(--dark-bg);
+        }
+
+        .mv-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .mv-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        .mv-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .mv-card h3 {
+            color: var(--dark-text);
+        }
+
+        .mv-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+        
+        body.dark-mode .mv-card p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        /* Values Section */
+        .values-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        body.dark-mode .values-section {
+            background-color: var(--dark-bg);
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .value-card {
+            background-color: var(--dark-card);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background-color: rgba(231, 76, 60, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--secondary-color);
+            font-size: 1.8rem;
+        }
+
+        .value-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .value-card h3 {
+            color: var(--dark-text);
+        }
+
+        .value-card p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        body.dark-mode .value-card p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+        
+        body.dark-mode .team-section {
+            background-color: var(--dark-card);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .team-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+        
+        body.dark-mode .team-card {
+            background-color: var(--dark-bg);
+        }
+
+        .team-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .team-img {
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .team-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .team-card:hover .team-img img {
+            transform: scale(1.05);
+        }
+
+        .team-content {
+            padding: 25px;
+        }
+
+        .team-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .team-content h3 {
+            color: var(--dark-text);
+        }
+
+        .team-content .position {
+            color: var(--secondary-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .team-content p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        body.dark-mode .team-content p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .team-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: #f5f5f5;
+            border-radius: 50%;
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .team-social a {
+            background-color: #374151;
+            color: var(--dark-text);
+        }
+
+        .team-social a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Stats Section */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        body.dark-mode .stats-section {
+            background: linear-gradient(135deg, var(--dark-card) 0%, #334155 100%);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-item i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f2741 0%, #1a3a5f 100%);
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+        
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+            }
+            
+            .header-controls {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .mv-grid, .values-grid, .team-grid, .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .auth-buttons a {
+                text-align: center;
+                padding: 8px 15px;
+            }
+            
+            .mv-card, .value-card, .team-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-img">
+                        <img src="https://img.freepik.com/premium-vector/attorney-law-service-justice-logo-design_779965-8.jpg" alt="لوگوی اختبار یار">
+                    </div>
+                    <h1>اختبار یار</h1>
+                </a>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" aria-label="تغییر حالت تاریک/روشن">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="auth-buttons">
+                        <a href="login.html" class="login">ورود</a>
+                        <a href="register.html" class="register">ثبت نام</a>
+                    </div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="dorous-ekhtiabar.html">دروس اختبار</a></li>
+                    <li><a href="asatid.html">اساتید</a></li>
+                    <li><a href="soalat-namone.html">سوالات نمونه</a></li>
+                    <li><a href="darbare-ma.html" class="active">درباره ما</a></li>
+                    <li><a href="tamas-ba-ma.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>درباره اختبار یار</h1>
+            <p>مرجع تخصصی پاسخ به سوالات امتحانات اختبار وکالت با هدف آماده‌سازی داوطلبان برای موفقیت در آزمون</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">صفحه اصلی</a></li>
+                <li><span>درباره ما</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>داستان ما</h2>
+                <p>چگونه اختبار یار متولد شد و چه مسیری را طی کرده است</p>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>از ایده تا اجرا</h3>
+                    <p>اختبار یار در سال ۱۴۰۰ با هدف ایجاد تحول در روش آماده‌سازی داوطلبان آزمون اختبار وکالت تأسیس شد. تیم ما متشکل از وکلای با تجربه و اساتید دانشگاهی است که سال‌ها در زمینه تدریس و مشاوره حقوقی فعالیت داشته‌اند.</p>
+                    <p>ما با بررسی دقیق نیازهای داوطلبان و تحلیل سوالات اختبارهای گذشته، متوجه شدیم که بسیاری از داوطلبان به دلیل عدم دسترسی به منابع مناسب و تحلیل‌های تخصصی، از موفقیت در این آزمون محروم می‌مانند.</p>
+                    <p>از این رو، با گردآوری تیمی متخصص و بهره‌گیری از فناوری‌های روز، پلتفرم اختبار یار را ایجاد کردیم تا مسیر موفقیت در اختبار وکالت را برای همه داوطلبان هموار کنیم.</p>
+                </div>
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80" alt="تیم اختبار یار">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Vision Section -->
+    <section class="mission-vision">
+        <div class="container">
+            <div class="mv-grid">
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>ماموریت ما</h3>
+                    <p>ایجاد بستری جامع و تخصصی برای آماده‌سازی داوطلبان آزمون اختبار وکالت با ارائه تحلیل‌های دقیق سوالات، منابع آموزشی با کیفیت و پشتیبانی تخصصی اساتید مجرب</p>
+                </div>
+                
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>چشم‌انداز ما</h3>
+                    <p>تبدیل شدن به مرجع اصلی و قابل اعتماد داوطلبان اختبار وکالت در سطح کشور و دستیابی به بالاترین نرخ موفقیت در بین مراکز آموزشی مرتبط با آزمون اختبار</p>
+                </div>
+                
+                <div class="mv-card">
+                    <div class="mv-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>اهداف ما</h3>
+                    <p>ارائه خدمات آموزشی با کیفیت، توسعه مستمر محتوای تخصصی، گسترش شبکه اساتید مجرب و ایجاد جامعه‌ای پویا از داوطلبان و وکلای آینده</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section class="values-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>ارزش‌های ما</h2>
+                <p>اصولی که بر اساس آنها فعالیت می‌کنیم</p>
+            </div>
+            
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>تخصص و کیفیت</h3>
+                    <p>همه مطالب و تحلیل‌های ارائه شده توسط اساتید مجرب و وکلای با تجربه تهیه و بررسی می‌شوند</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>تعهد به موفقیت</h3>
+                    <p>ما خود را متعهد به موفقیت داوطلبان می‌دانیم و تمام تلاش خود را برای دستیابی به این هدف به کار می‌گیریم</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>جامعه‌گرایی</h3>
+                    <p>ایجاد جامعه‌ای پویا از داوطلبان که می‌توانند از تجربیات یکدیگر بهره‌مند شوند</p>
+                </div>
+                
+                <div class="value-card">
+                    <div class="value-icon">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h3>توسعه مستمر</h3>
+                    <p>بهبود و توسعه مستمر خدمات و محتوای آموزشی بر اساس بازخوردهای دریافتی و نیازهای روز</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>تیم ما</h2>
+                <p>با اعضای تیم اختبار یار آشنا شوید</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="مدیر عامل">
+                    </div>
+                    <div class="team-content">
+                        <h3>دکتر امیررضا کریمی</h3>
+                        <span class="position">مدیر عامل و بنیان‌گذار</span>
+                        <p>دکترای حقوق خصوصی از دانشگاه تهران با ۱۵ سال سابقه تدریس و وکالت. بنیان‌گذار اختبار یار و مسئول راهبری کلی مجموعه.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="مدیر محتوا">
+                    </div>
+                    <div class="team-content">
+                        <h3>دکتر سارا محمدی</h3>
+                        <span class="position">مدیر محتوای آموزشی</span>
+                        <p>دکترای حقوق جزا و جرم شناسی با ۱۲ سال سابقه تدریس. مسئول نظارت بر کیفیت محتوای آموزشی و تحلیل سوالات اختبار.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-card">
+                    <div class="team-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80" alt="مدیر فناوری">
+                    </div>
+                    <div class="team-content">
+                        <h3>مهندس محمدرضا حسینی</h3>
+                        <span class="position">مدیر فناوری اطلاعات</span>
+                        <p>کارشناسی ارشد مهندسی نرم‌افزار با ۱۰ سال سابقه در توسعه پلتفرم‌های آموزشی. مسئول توسعه و نگهداری فنی پلتفرم اختبار یار.</p>
+                        <div class="team-social">
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>۲,۵۰۰+</h3>
+                    <p>دانشجوی فعال</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>۱۵+</h3>
+                    <p>استاد مجرب</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-book"></i>
+                    <h3>۸+</h3>
+                    <p>درس تخصصی</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-award"></i>
+                    <h3>۹۵%</h3>
+                    <p>رضایت دانشجویان</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>اختبار یار</h3>
+                    <p>مرجع تخصصی پاسخ به سوالات امتحانات اختبار وکالت با هدف آماده‌سازی داوطلبان برای موفقیت در آزمون</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>لینک‌های مفید</h3>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="darbare-ma.html">درباره ما</a></li>
+                        <li><a href="tamas-ba-ma.html">تماس با ما</a></li>
+                        <li><a href="ghavanin.html">قوانین و مقررات</a></li>
+                        <li><a href="soalat-motadavel.html">سوالات متداول</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>دروس اختبار</h3>
+                    <ul>
+                        <li><a href="hooghogh-madani.html">حقوق مدنی</a></li>
+                        <li><a href="ayin-dadresi-madani.html">آیین دادرسی مدنی</a></li>
+                        <li><a href="hooghogh-jaza.html">حقوق جزا</a></li>
+                        <li><a href="ayin-dadresi-keifari.html">آیین دادرسی کیفری</a></li>
+                        <li><a href="hooghogh-tejarat.html">حقوق تجارت</a></li>
+                        <li><a href="hooghogh-sabt.html">حقوق ثبت</a></li>
+                        <li><a href="omoor-hasbi.html">امور حسبی</a></li>
+                        <li><a href="magharaat-entezami-vakalat.html">مقررات انتظامی وکالت</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تماس با ما</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳</li>
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@ekhtiariyar.ir</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>کلیه حقوق این وبسایت متعلق به اختبار یار می‌باشد. © ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // حالت تاریک/روشن
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // بررسی وضعیت ذخیره شده در localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // هدر هوشمند
+            const header = document.getElementById('mainHeader');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

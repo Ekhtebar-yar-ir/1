@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دروس اختبار - اختبار یار</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    <style>
+        :root {
+            --primary-color: #1a3a5f;
+            --secondary-color: #e74c3c;
+            --accent-color: #2c5282;
+            --text-dark: #333;
+            --text-light: #666;
+            --background-light: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --dark-text: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body.dark-mode {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 0;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode header {
+            background-color: var(--dark-card);
+        }
+        
+        header.scrolled {
+            background-color: rgba(26, 58, 95, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 0;
+        }
+        
+        body.dark-mode header.scrolled {
+            background-color: rgba(30, 41, 59, 0.95);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--white);
+        }
+
+        .logo .logo-img {
+            height: 50px;
+            width: 50px;
+            margin-left: 12px;
+            transition: var(--transition);
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .logo .logo-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .auth-buttons a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+
+        .auth-buttons .login {
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .auth-buttons .register {
+            background-color: var(--secondary-color);
+            border: 1px solid var(--secondary-color);
+        }
+
+        .auth-buttons a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            background-color: rgba(0,0,0,0.1);
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            position: relative;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 15px 20px;
+            display: block;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 3px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        nav ul li a.active {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        nav ul li a.active:after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, rgba(26, 58, 95, 0.9) 0%, rgba(44, 82, 130, 0.9) 100%), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        body.dark-mode .page-header {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+        }
+
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: var(--white);
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        
+        body.dark-mode .breadcrumb {
+            background-color: var(--dark-card);
+        }
+
+        .breadcrumb ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .breadcrumb li {
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .breadcrumb li:not(:last-child):after {
+            content: '/';
+            margin-right: 10px;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .breadcrumb li:not(:last-child):after {
+            color: var(--dark-text);
+            opacity: 0.7;
+        }
+
+        .breadcrumb a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        body.dark-mode .breadcrumb a {
+            color: var(--dark-text);
+            opacity: 0.7;
+        }
+
+        .breadcrumb a:hover {
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .breadcrumb a:hover {
+            color: var(--secondary-color);
+        }
+
+        .breadcrumb span {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        body.dark-mode .breadcrumb span {
+            color: var(--secondary-color);
+        }
+
+        /* Courses Section */
+        .courses-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+        
+        body.dark-mode .courses-section {
+            background-color: var(--dark-bg);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        body.dark-mode .section-title h2 {
+            color: var(--dark-text);
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        body.dark-mode .section-title p {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .courses-filter {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+        
+        body.dark-mode .courses-filter {
+            background-color: var(--dark-card);
+        }
+
+        .filter-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        body.dark-mode .filter-title {
+            color: var(--dark-text);
+        }
+
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .filter-option {
+            background-color: #f5f5f5;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+        }
+        
+        body.dark-mode .filter-option {
+            background-color: #374151;
+            color: var(--dark-text);
+        }
+
+        .filter-option.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .filter-option:hover {
+            background-color: #e0e0e0;
+        }
+        
+        body.dark-mode .filter-option:hover {
+            background-color: #4b5563;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .course-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        body.dark-mode .course-card {
+            background-color: var(--dark-card);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .course-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .course-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .course-card:hover .course-img img {
+            transform: scale(1.05);
+        }
+
+        .course-category {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .course-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            line-height: 1.4;
+        }
+        
+        body.dark-mode .course-content h3 {
+            color: var(--dark-text);
+        }
+
+        .course-description {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        body.dark-mode .course-description {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        body.dark-mode .course-meta {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .course-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .course-meta i {
+            margin-left: 5px;
+        }
+
+        .course-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        body.dark-mode .stat-value {
+            color: var(--dark-text);
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        body.dark-mode .stat-label {
+            color: var(--dark-text);
+            opacity: 0.8;
+        }
+
+        .course-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+        }
+
+        .course-price {
+            font-weight: 700;
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+        }
+
+        .course-link {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .course-link:hover {
+            background-color: var(--accent-color);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .pagination a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        body.dark-mode .pagination a {
+            background-color: var(--dark-card);
+            color: var(--dark-text);
+        }
+
+        .pagination a.active, .pagination a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0f2741 0%, #1a3a5f 100%);
+            color: var(--white);
+            padding: 80px 0 20px;
+        }
+        
+        body.dark-mode footer {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .footer-col p {
+            color: #bbb;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-inner {
+                flex-wrap: wrap;
+            }
+            
+            .header-controls {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                margin-top: 15px;
+            }
+            
+            .page-header h1 {
+                font-size: 2rem;
+            }
+            
+            .page-header p {
+                font-size: 1rem;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-options {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .auth-buttons {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .auth-buttons a {
+                text-align: center;
+                padding: 8px 15px;
+            }
+            
+            .course-footer {
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            
+            .course-link {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="mainHeader">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo">
+                    <div class="logo-img">
+                        <img src="https://img.freepik.com/premium-vector/attorney-law-service-justice-logo-design_779965-8.jpg" alt="لوگوی اختبار یار">
+                    </div>
+                    <h1>اختبار یار</h1>
+                </a>
+                <div class="header-controls">
+                    <button class="theme-toggle" id="themeToggle" aria-label="تغییر حالت تاریک/روشن">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <div class="auth-buttons">
+                        <a href="login.html" class="login">ورود</a>
+                        <a href="register.html" class="register">ثبت نام</a>
+                    </div>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="dorous-ekhtiabar.html" class="active">دروس اختبار</a></li>
+                    <li><a href="asatid.html">اساتید</a></li>
+                    <li><a href="soalat-namone.html">سوالات نمونه</a></li>
+                    <li><a href="darbare-ma.html">درباره ما</a></li>
+                    <li><a href="tamas-ba-ma.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>دروس امتحان اختبار</h1>
+            <p>لیست کامل دروس تخصصی امتحان اختبار وکالت که توسط برترین اساتید تحلیل و تدریس می‌شوند</p>
+        </div>
+    </section>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb">
+        <div class="container">
+            <ul>
+                <li><a href="index.html">صفحه اصلی</a></li>
+                <li><span>دروس اختبار</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section class="courses-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>دروس تخصصی اختبار وکالت</h2>
+                <p>برای موفقیت در امتحان اختبار وکالت، باید بر این دروس تخصصی مسلط شوید</p>
+            </div>
+            
+            <div class="courses-filter">
+                <h3 class="filter-title"><i class="fas fa-filter"></i> فیلتر دروس</h3>
+                <div class="filter-options">
+                    <button class="filter-option active" data-filter="all">همه دروس</button>
+                    <button class="filter-option" data-filter="civil">حقوق مدنی</button>
+                    <button class="filter-option" data-filter="civil-procedure">آیین دادرسی مدنی</button>
+                    <button class="filter-option" data-filter="criminal">حقوق جزا</button>
+                    <button class="filter-option" data-filter="criminal-procedure">آیین دادرسی کیفری</button>
+                    <button class="filter-option" data-filter="commercial">حقوق تجارت</button>
+                    <button class="filter-option" data-filter="registration">حقوق ثبت</button>
+                    <button class="filter-option" data-filter="estate">امور حسبی</button>
+                    <button class="filter-option" data-filter="disciplinary">مقررات انتظامی وکالت</button>
+                </div>
+            </div>
+            
+            <div class="courses-grid" id="coursesGrid">
+                <!-- حقوق مدنی -->
+                <div class="course-card" data-category="civil">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1589391886645-d51941baf7fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="حقوق مدنی" loading="lazy">
+                        <span class="course-category">حقوق مدنی</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>تحلیل سوالات حقوق مدنی در اختبار</h3>
+                        <p class="course-description">بررسی کامل سوالات حقوق مدنی در اختبارهای گذشته با تحلیل دقیق و ارائه راهکارهای کاربردی برای پاسخگویی</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: رسول موسوی</span>
+                            <span><i class="far fa-clock"></i> ۴۰ ساعت</span>
+                        </div>
+                        <div class="course-stats">
+                            <div class="stat">
+                                <div class="stat-value">۱۵۰+</div>
+                                <div class="stat-label">دانشجو</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۹۵%</div>
+                                <div class="stat-label">رضایت</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۴.۸</div>
+                                <div class="stat-label">امتیاز</div>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۴۹۰,۰۰۰ تومان</div>
+                            <a href="hooghogh-madani.html" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- آیین دادرسی کیفری -->
+                <div class="course-card" data-category="criminal-procedure">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1593115057322-e94b77572f20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80" alt="آیین دادرسی کیفری" loading="lazy">
+                        <span class="course-category">آیین دادرسی کیفری</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>تحلیل سوالات آیین دادرسی کیفری در اختبار</h3>
+                        <p class="course-description">بررسی سوالات آیین دادرسی کیفری در اختبارهای گذشته با تمرکز بر نکات کلیدی و چالش‌برانگیز</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: عرفانی قربانی فر</span>
+                            <span><i class="far fa-clock"></i> ۳۵ ساعت</span>
+                        </div>
+                        <div class="course-stats">
+                            <div class="stat">
+                                <div class="stat-value">۱۲۰+</div>
+                                <div class="stat-label">دانشجو</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۹۳%</div>
+                                <div class="stat-label">رضایت</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۴.۷</div>
+                                <div class="stat-label">امتیاز</div>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۴۲۰,۰۰۰ تومان</div>
+                            <a href="ayin-dadresi-keifari.html" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- حقوق تجارت -->
+                <div class="course-card" data-category="commercial">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="حقوق تجارت" loading="lazy">
+                        <span class="course-category">حقوق تجارت</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>تحلیل سوالات حقوق تجارت در اختبار</h3>
+                        <p class="course-description">بررسی جامع سوالات حقوق تجارت در اختبار با تحلیل مسائل شرکت‌ها، اسناد تجاری و ورشکستگی</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: پژمان معتمدی</span>
+                            <span><i class="far fa-clock"></i> ۳۰ ساعت</span>
+                        </div>
+                        <div class="course-stats">
+                            <div class="stat">
+                                <div class="stat-value">۹۵+</div>
+                                <div class="stat-label">دانشجو</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۹۶%</div>
+                                <div class="stat-label">رضایت</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۴.۹</div>
+                                <div class="stat-label">امتیاز</div>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۳۸۰,۰۰۰ تومان</div>
+                            <a href="hooghogh-tejarat.html" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- آیین دادرسی مدنی -->
+                <div class="course-card" data-category="civil-procedure">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="آیین دادرسی مدنی" loading="lazy">
+                        <span class="course-category">آیین دادرسی مدنی</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>تحلیل سوالات آیین دادرسی مدنی در اختبار</h3>
+                        <p class="course-description">بررسی کامل سوالات آیین دادرسی مدنی با تمرکز بر صلاحیت مراجع، دعاوی و اجرای احکام</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: در حال تعیین</span>
+                            <span><i class="far fa-clock"></i> ۴۵ ساعت</span>
+                        </div>
+                        <div class="course-stats">
+                            <div class="stat">
+                                <div class="stat-value">۸۰+</div>
+                                <div class="stat-label">دانشجو</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۹۰%</div>
+                                <div class="stat-label">رضایت</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۴.۶</div>
+                                <div class="stat-label">امتیاز</div>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۵۵۰,۰۰۰ تومان</div>
+                            <a href="ayin-dadresi-madani.html" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- حقوق جزا -->
+                <div class="course-card" data-category="criminal">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="حقوق جزا" loading="lazy">
+                        <span class="course-category">حقوق جزا</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>تحلیل سوالات حقوق جزا در اختبار</h3>
+                        <p class="course-description">بررسی سوالات حقوق جزای عمومی و اختصاصی در اختبار با تحلیل جرائم و مجازات‌ها</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: در حال تعیین</span>
+                            <span><i class="far fa-clock"></i> ۳۲ ساعت</span>
+                        </div>
+                        <div class="course-stats">
+                            <div class="stat">
+                                <div class="stat-value">۷۵+</div>
+                                <div class="stat-label">دانشجو</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۸۸%</div>
+                                <div class="stat-label">رضایت</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۴.۵</div>
+                                <div class="stat-label">امتیاز</div>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۴۰۰,۰۰۰ تومان</div>
+                            <a href="hooghogh-jaza.html" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- حقوق ثبت -->
+                <div class="course-card" data-category="registration">
+                    <div class="course-img">
+                        <img src="https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80" alt="حقوق ثبت" loading="lazy">
+                        <span class="course-category">حقوق ثبت</span>
+                    </div>
+                    <div class="course-content">
+                        <h3>تحلیل سوالات حقوق ثبت در اختبار</h3>
+                        <p class="course-description">بررسی سوالات حقوق ثبت اسناد و املاک در اختبار با تمرکز بر مقررات ثبتی و رویه‌های اداری</p>
+                        <div class="course-meta">
+                            <span><i class="fas fa-chalkboard-teacher"></i> استاد: در حال تعیین</span>
+                            <span><i class="far fa-clock"></i> ۲۵ ساعت</span>
+                        </div>
+                        <div class="course-stats">
+                            <div class="stat">
+                                <div class="stat-value">۶۰+</div>
+                                <div class="stat-label">دانشجو</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۸۵%</div>
+                                <div class="stat-label">رضایت</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value">۴.۴</div>
+                                <div class="stat-label">امتیاز</div>
+                            </div>
+                        </div>
+                        <div class="course-footer">
+                            <div class="course-price">۳۲۰,۰۰۰ تومان</div>
+                            <a href="hooghogh-sabt.html" class="course-link">مشاهده دوره</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pagination">
+                <a href="#" class="active">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#"><i class="fas fa-chevron-left"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>اختبار یار</h3>
+                    <p>مرجع تخصصی پاسخ به سوالات امتحانات اختبار وکالت با هدف آماده‌سازی داوطلبان برای موفقیت در آزمون</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="اینستاگرام"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="تلگرام"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="لینکدین"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" aria-label="توییتر"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>لینک‌های مفید</h3>
+                    <ul>
+                        <li><a href="index.html">صفحه اصلی</a></li>
+                        <li><a href="darbare-ma.html">درباره ما</a></li>
+                        <li><a href="tamas-ba-ma.html">تماس با ما</a></li>
+                        <li><a href="ghavanin.html">قوانین و مقررات</a></li>
+                        <li><a href="soalat-motadavel.html">سوالات متداول</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>دروس اختبار</h3>
+                    <ul>
+                        <li><a href="hooghogh-madani.html">حقوق مدنی</a></li>
+                        <li><a href="ayin-dadresi-madani.html">آیین دادرسی مدنی</a></li>
+                        <li><a href="hooghogh-jaza.html">حقوق جزا</a></li>
+                        <li><a href="ayin-dadresi-keifari.html">آیین دادرسی کیفری</a></li>
+                        <li><a href="hooghogh-tejarat.html">حقوق تجارت</a></li>
+                        <li><a href="hooghogh-sabt.html">حقوق ثبت</a></li>
+                        <li><a href="omoor-hasbi.html">امور حسبی</a></li>
+                        <li><a href="magharaat-entezami-vakalat.html">مقررات انتظامی وکالت</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>تماس با ما</h3>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> تهران، خیابان ولیعصر، پلاک ۱۲۳</li>
+                        <li><i class="fas fa-phone"></i> ۰۲۱-۱۲۳۴۵۶۷۸</li>
+                        <li><i class="fas fa-envelope"></i> info@ekhtiariyar.ir</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>کلیه حقوق این وبسایت متعلق به اختبار یار می‌باشد. © ۱۴۰۲</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // سیستم فیلتر دوره‌ها
+            const filterOptions = document.querySelectorAll('.filter-option');
+            const courseCards = document.querySelectorAll('.course-card');
+            
+            filterOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // حذف کلاس active از همه گزینه‌ها
+                    filterOptions.forEach(opt => opt.classList.remove('active'));
+                    // اضافه کردن کلاس active به گزینه انتخاب شده
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    // فیلتر کردن دوره‌ها
+                    courseCards.forEach(card => {
+                        if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 10);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+            
+            // حالت تاریک/روشن
+            const themeToggle = document.getElementById('themeToggle');
+            const themeIcon = themeToggle.querySelector('i');
+            
+            // بررسی وضعیت ذخیره شده در localStorage
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('dark-mode');
+                
+                if (document.body.classList.contains('dark-mode')) {
+                    themeIcon.classList.remove('fa-moon');
+                    themeIcon.classList.add('fa-sun');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    themeIcon.classList.remove('fa-sun');
+                    themeIcon.classList.add('fa-moon');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+            
+            // هدر هوشمند
+            const header = document.getElementById('mainHeader');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
